@@ -1,0 +1,10 @@
+.jumbotron {
+  background-image: url("http://peakandpixel.com/wp-content/uploads/2015/08/tigerroad.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+li {
+color: red;
+}
