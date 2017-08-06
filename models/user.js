@@ -3,8 +3,10 @@ var bcrypt   = require('bcrypt-nodejs');
 
 var User = mongoose.Schema({
   local : {
+    firstName    : String,
+    lastName     : String,
     email        : String,
-    password     : String,
+    password     : String
 	}
 });
 
@@ -17,3 +19,4 @@ User.methods.validPassword = function(password) {
 };
 
 module.exports = mongoose.model('User', User);
+

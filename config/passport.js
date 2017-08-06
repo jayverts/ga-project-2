@@ -19,23 +19,27 @@ passport.use('local-signup', new LocalStrategy({
   passReqToCallback : true
 }, function(req, email, password, callback) {
   User.findOne({ 'local.email' :  email }, function(err, user) {
-  if (err) return callback(err);
+    if (err) return callback(err);
 
-  //If user already exists
-  if (user) {
-  return callback(null, false, req.flash('signupMessage', 'This email is already used.'));
-  } else {
-  //user does not exist yet
-  //create it
-  var newUser = new User();
-  newUser.local.email    = email;
-  newUser.local.password = newUser.encrypt(password);
+    //If user already exists
+    if (user) {
+      return callback(null, false, req.flash('signupMessage', 'This email is already used.'));
+    } else {
+      //user does not exist yet
+      //create it
+      var newUser = new User();
+      var firstName = req.body.firstName;
+      var lastName = req.body.lastName;
+      newUser.local.email    = email;
+      newUser.local.password = newUser.encrypt(password);
+      newUser.local.firstName = firstName; 
+      newUser.local.lastName = lastName;
 
-  newUser.save(function(err) {
-  if (err) throw err;
-  return callback(null, newUser);
-  });
-  }
+      newUser.save(function(err) {
+        if (err) throw err;
+        return callback(null, newUser);
+      });
+    }
   }); 
     }));
 

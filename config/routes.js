@@ -7,6 +7,8 @@ var methodOverride = require('method-override');
 var passport = require("passport");
 var usersController = require('../controllers/users');
 var staticsController = require('../controllers/statics');
+var northController = require('../controllers/statics');
+var westController = require('../controllers/statics');
 
 function authenticatedUser(req, res, next) {
   // If the user is authenticated, then we continue the execution
@@ -17,6 +19,12 @@ function authenticatedUser(req, res, next) {
 
 router.route('/')
   .get(staticsController.home);
+
+router.route('/north.ejs')
+  .get(northController.north);
+
+router.route('/west.ejs')
+  .get(westController.west);
 
 router.route('/signup')
   .get(usersController.getSignup)
