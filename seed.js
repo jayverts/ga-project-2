@@ -2,29 +2,29 @@ var db = require("./models");
 
 var sitesList =[];
 sitesList.push({
-	campsite: 'the Old Kanye',
-	latitude: 'The College Dropout',
-	longitude: '2004, February 10',
-	directions:  'hip hop' 
+	campsite: 'Bill Moore Lake',
+    latitude: 39.8047407,
+    longitude: -105.7124468,
+    directions: "I-70 westbound, take exit #232 US Hwy 40 to Empire. Turn right on Main St. (North Empire Road) and follow the County Road on to Forest Road 171.2."
 });
 
 sitesList.push({
-	campsite: 'the Newish Kanye',
-	latitude: 'The Life of Pablo',
-	longitude: '2016, Febraury 14',
-	directions: 'hip hop' 
+	campsite: 'Bill Moore Lake',
+    latitude: 39.8047407,
+    longitude: -105.7124468,
+    directions: "I-70 westbound, take exit #232 US Hwy 40 to Empire. Turn right on Main St. (North Empire Road) and follow the County Road on to Forest Road 171.2."
 });
 sitesList.push({
-	campsite: 'the always rude Kanye',
-	latitude: 'My Beautiful Dark Twisted Fantasy',
-	longitude: '2010, November 22',
-	directions: 'hip hop'
+	campsite: 'Bill Moore Lake',
+    latitude: 39.8047407,
+    longitude: -105.7124468,
+    directions: "I-70 westbound, take exit #232 US Hwy 40 to Empire. Turn right on Main St. (North Empire Road) and follow the County Road on to Forest Road 171.2."
 });
 sitesList.push({
-	campsite: 'the sweet Kanye',
-	latitude: '808s & Heartbreak',
-	longitude: '2008, November 24',
-	directions: 'synthpop'
+	campsite: 'Bill Moore Lake',
+    latitude: 39.8047407,
+    longitude: -105.7124468,
+    directions: "I-70 westbound, take exit #232 US Hwy 40 to Empire. Turn right on Main St. (North Empire Road) and follow the County Road on to Forest Road 171.2."
 });
 
 
@@ -32,6 +32,7 @@ db.CampSite.remove({}, function(err, campsites){
 
   db.CampSite.create(sitesList, function(err, campsites){
     if (err) { return console.log('ERROR', err); }
+    console.log("seed working");
     process.exit();
   });
 });

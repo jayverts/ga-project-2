@@ -15,4 +15,17 @@ I was able to add a first name and last name to the data base and have the login
 8/5/2017
 -----------
 
-Moving on to work on the camp sites. Will try to incorporate the API into it as well.
+Moving on to work on the camp sites. Will try to incorporate the API into it as well. 
+
+12 hours later I got campsites to show up in the DB. Still can not get them to save inside the database but at least it is something. I am going to bed.
+
+8/6/2017
+-----------
+
+Back at it again today. Let's see how far I can make it.
+
+Not far.
+
+8/7/2017
+---------
+Day before the project is due. I am still stuck trying to get my JSON to render on the page. Here goes nothing.

@@ -69,11 +69,22 @@ app.use(routes);
 
 app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.ejs');
+console.log("getting homepage");
 });
 
 app.get('/north.ejs', function campsite_index(req, res){
+  app.use(routes);
   db.CampSite.find({}, function(err,campSites) {
+  console.log("wow");
   res.json(campSites);
+  });
+});
+
+app.post('/north.ejs/campsites', function newSitePost(req,res) {
+  app.use(routes);
+  db.CampSite.create(req.body, function(err, campSite) {
+    console.log("working!!");
+    res.json(campSite);
   });
 });
 

@@ -20,11 +20,13 @@ function authenticatedUser(req, res, next) {
 router.route('/')
   .get(staticsController.home);
 
-router.route('/north.ejs')
-  .get(northController.north);
+router.route('/north')
+  .get(northController.north)
+  .post(northController.north);
 
-router.route('/west.ejs')
-  .get(westController.west);
+router.route('/west')
+  .get(westController.west)
+  .post(westController.west);
 
 router.route('/signup')
   .get(usersController.getSignup)

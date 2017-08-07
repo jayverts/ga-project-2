@@ -1,28 +1,33 @@
-var sampleAlbums = [];
-sampleAlbums.push({
-             artistName: 'Ladyhawke',
-             name: 'Ladyhawke',
-             releaseDate: '2008, November 18',
-             genres: [ 'new wave', 'indie rock', 'synth pop' ]
-           });
-sampleAlbums.push({
-             artistName: 'The Knife',
-             name: 'Silent Shout',
-             releaseDate: '2006, February 17',
-             genres: [ 'synth pop', 'electronica', 'experimental' ]
-           });
-sampleAlbums.push({
-             artistName: 'Juno Reactor',
-             name: 'Shango',
-             releaseDate: '2000, October 9',
-             genres: [ 'electronic', 'goa trance', 'tribal house' ]
-           });
-sampleAlbums.push({
-             artistName: 'Philip Wesley',
-             name: 'Dark Night of the Soul',
-             releaseDate: '2008, September 12',
-             genres: [ 'piano' ]
-           });
+var campSites = [];
+campSites.push({
+  _id: 132,
+  campsite: 'Soap Creek Corral',
+  latitude : 38.54702233,
+  longitude: -107.3162093,
+  directions: "Take U.S. Highway 50 to Colorado State Highway 92. Turn right on to Highway 92 travel 1 miles to County Road 721 (also called Forest Road #721). Turn right on Forest Road #721 and drive 7.25 miles to Forest Road #824. Turn right on to Forest Road #824 and travel 0.5 miles."
+});
+campSites.push({
+  _id: 133,
+  campsite: 'West Magnolia',
+  latitude: 39.9504986117,
+  longitude: -105.50440096800,
+  directions: "From Nederland, head south on Colorado Highway 119 for 2.8 miles. Turn west onto County Road 132W. Limited parking is available just off of the highway, or continue one mile west and turn south through the second Forest Service gate to the main trailhead parking area."
+});
+campSites.push({
+    _id: 134,
+    campsite: 'Winiger Ridge',
+    latitude: 39.9289926,
+    longitude: -105.4412027,
+    directions: "From Boulder, head west on Canyon Boulevard (Colorado Highway 119) to Magnolia Road (about 4.5 miles up from the mouth of the canyon). Turn south on Magnolia and follow it for 6.6 miles. Turn south on Boulder County Road 68 and follow it two miles to National Forest System Road (NFSR) 359. Turn south on NFSR 359"
+  });
+campSites.push({
+    _id: 135,
+    campsite: 'Bill Moore Lake',
+    latitude: 39.8047407,
+    longitude: -105.7124468,
+    directions: "I-70 westbound, take exit #232 US Hwy 40 to Empire. Turn right on Main St. (North Empire Road) and follow the County Road on to Forest Road 171.2."
+  });
+
 /* end of hard-coded data */
 
 
@@ -34,6 +39,7 @@ $(document).ready(function() {
     let campSites = data;
     campSites.forEach(function(campSites) {
     renderCampsites(campSites);
+   console.log("loaded!");
    });
   });
 
@@ -41,49 +47,28 @@ $("form").on("submit", function(event) {
   event.preventDefault();
   var formData = $(this).serialize();
    $(this).trigger("reset");
-  console.log(formData);
+  console.log("got data");
 
 $.ajax({
   method: 'POST',
-  url: '/north.ejs',
+  url: '/north/campsites',
   dataType: 'json',
   data: formData,
   success: function(event){
-    renderAlbum(event);
+    renderCampsites(event);
+      console.log("POSTING!");
       }
     });
   });
 
-$('#campsites').on('click', '.add-song', function(e) {
+$('#campsites').on('click', '.add-campsite', function(e) {
   console.log('asdfasdfasdf');
-  var id= $(this).parents('.album').data('album-id');
+  var id= $(this).parents('.campsite').data('campsite-id');
   console.log('id',id);
-  var currentAlbumId;
-  $('#songModal').data('album-id', currentAlbumId).modal();
 
   // call this when the button on the modal is clicked
 //********
- $('#saveSong').on('click', function handleNewSongSubmit(e) {
-    console.log("adding new songs");
-    e.preventDefault();
 
-    var newSong = $('#songName').val();
-    var track = $('#trackNumber').val();
-
-    $.ajax({
-      method: 'POST',
-      url: 'api/albums/'+ id + '/songs',
-      dataType: 'json',
-      data: {
-        name: newSong,
-        trackNumber: track
-      },
-    success: function(event){
-    $('#songModal').modal('hide');
-    $('#trackNumber').val("");
-    $('#songName').val("");
-      }
-    });
     // get data from modal fields
     // POST to SERVER
     // clear form
@@ -92,7 +77,6 @@ $('#campsites').on('click', '.add-song', function(e) {
 
     });
   });
-});
 
 // this function takes a single album and renders it to the page
 function renderCampsites(CampSites) {
@@ -100,7 +84,7 @@ function renderCampsites(CampSites) {
 
   var campsiteHtml =
   "        <!-- one campsite-->" +
-  "        <div class='row album' data-album-id='" + campSites._id+ "'>" +
+  "        <div class='row campsite' data-campsite-id='" + campSites._id+ "'>" +
   "          <div class='col-md-10 col-md-offset-1'>" +
   "            <div class='panel panel-default'>" +
   "              <div class='panel-body'>" +
@@ -140,7 +124,7 @@ function renderCampsites(CampSites) {
 
   "            </div>" +
   "          </div>" +
-  "          <!-- end one album -->";
+  "          <!-- end one campsite -->";
  
 $("#campsites").append(campsiteHtml);
 
