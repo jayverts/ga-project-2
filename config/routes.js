@@ -9,6 +9,7 @@ var usersController = require('../controllers/users');
 var staticsController = require('../controllers/statics');
 var northController = require('../controllers/statics');
 var westController = require('../controllers/statics');
+var siteController = require('../controllers/newCampsites');
 
 function authenticatedUser(req, res, next) {
   // If the user is authenticated, then we continue the execution
@@ -23,6 +24,10 @@ router.route('/')
 router.route('/north')
   .get(northController.north)
   .post(northController.north);
+
+router.route('/north/campsites')
+  .get(siteController.siteGet)
+  .post(siteController.sitePost);
 
 router.route('/west')
   .get(westController.west)

@@ -30,7 +30,7 @@ sitesList.push({
 
 db.CampSite.remove({}, function(err, campsites){
 
-  db.CampSite.create(sitesList, function(err, campsites){
+db.CampSite.create(sitesList, function(err, campsites){
     if (err) { return console.log('ERROR', err); }
     console.log("seed working");
     process.exit();

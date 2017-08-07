@@ -35,7 +35,7 @@ campSites.push({
 
 $(document).ready(function() {
   console.log('app.js loaded!');
-  $.get("http://localhost:3000/north.ejs").done(function(data) {
+  $.get("http://localhost:3000/north").done(function(data) {
     let campSites = data;
     campSites.forEach(function(campSites) {
     renderCampsites(campSites);
