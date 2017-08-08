@@ -5,7 +5,8 @@ var CampSite = mongoose.Schema({
     campsite : String,
     latitude : Number,
     longitude : Number,
-    directions : String
+    directions : String,
+    weather: String
 	}
 });
 

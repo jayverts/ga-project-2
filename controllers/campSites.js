@@ -7,7 +7,7 @@ var siteGet = function(req, res) { //look at that controller
 
 var sitePost = function(req, res) { //and look at that controller
 	console.log("askldj");
-	db.CampSite.create({local: {campsite: req.body.campsite, latitude: req.body.latitude, longitude: req.body.longitude, directions: req.body.directions}}, function(error, campSite) {
+	db.CampSite.create({local: {campsite: req.body.campsite, latitude: req.body.latitude, longitude: req.body.longitude, directions: req.body.directions, weather: req.body.weather}}, function(error, campSite) {
 		console.log(campSite);
 		res.json(campSite);
 	});

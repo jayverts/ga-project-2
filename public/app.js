@@ -84,14 +84,14 @@ function renderCampsites(Campsite) {
   Campsite = Campsite.local;
   var campsiteHtml =
   "        <!-- one campsite-->" +
-  "        <div class='row campsite' data-campsite-id='" + Campsite._id+ "'>" +
-  "          <div class='col-md-10 col-md-offset-1'>" +
-  "            <div class='panel panel-default'>" +
-  "              <div class='panel-body'>" +
+  // "        <div class='row campsite' data-campsite-id='" + Campsite._id+ "'>" +
+  // "          <div class='col-md-10 col-md-offset-1'>" +
+  // "            <div class='panel panel-default'>" +
+  // "              <div class='panel-body'>" +
   "              <!-- begin album internal row -->" +
   "                <div class='row'>" +
   "                  <div class='col-md-3 col-xs-12 thumbnail album-art'>" +
-  "                     <img src='" + "http://placehold.it/400x400'" +  " alt='album image'>" +
+  "                     <img src='" + "http://www.michaelarches.com/wp-content/uploads/Empire/Empire-Bill-Moore-Lake-5.jpg'" +  " alt='album image'>" +
   "                  </div>" +
   "                  <div class='col-md-9 col-xs-12'>" +
   "                    <ul class='list-group'>" +
@@ -111,16 +111,16 @@ function renderCampsites(Campsite) {
   "                        <h4 class='inline-header'>Directions:</h4>" +
   "                        <span class='directions'>" + Campsite.directions + "</span>" +
   "                      </li>" +
+  "                      <li class='list-group-item'>" +
+  "                        <h4 class='inline-header'>Weather:</h4>" +
+  "                        <span class='directions'>" + Campsite.weather + "</span>" +
+  "                      </li>" +
   "                    </ul>" +
   "                  </div>" +
   "                </div>" +
   "                <!-- end of album internal row -->" +
 
   "              </div>" + // end of panel-body
-
-  "              <div class='panel-footer'>" +
-  "              <button class='btn btn-primary add-campsite'>Add Campsite</button>" +
-  "              </div>" +
 
   "            </div>" +
   "          </div>" +

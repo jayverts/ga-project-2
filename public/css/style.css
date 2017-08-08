@@ -2,13 +2,6 @@
 	background-color: #206040;
 	color: white;
 }
-#logout {
-	text-align: right;
-}
-
-.navbar-brand {
-  color: red;
-}
 
 .jumbotron {
   background-image: url("http://peakandpixel.com/wp-content/uploads/2015/08/tigerroad.jpg");
@@ -21,5 +14,6 @@
 }
 
 li {
-color: red;
+	color: #001a33;
+	font-size: 20px;
 }
