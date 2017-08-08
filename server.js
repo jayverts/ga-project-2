@@ -9,7 +9,7 @@ var bodyParser   = require('body-parser');
 var session      = require('express-session');
 // var ejs = require('ejs');
 
-mongoose.connect('mongodb://localhost/project-2'); 
+mongoose.connect( process.env.MONGODB_URI || 'mongodb://localhost/project-2');
 
 app.use(morgan('dev')); 
 app.use(cookieParser());
@@ -93,4 +93,4 @@ app.use(routes);
 //   });
 // });
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
