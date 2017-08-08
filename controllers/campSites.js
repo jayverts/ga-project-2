@@ -1,12 +1,15 @@
-var CampSites = require('../models/campSite');
+// var CampSites = require('../models/campSite');
+var db = require('../models');
 
 var siteGet = function(req, res) { //look at that controller
 	res.render('north'); 
 };
 
 var sitePost = function(req, res) { //and look at that controller
-	db.CampSite.create({campsite: req.body.campsite, latitude: req.body.latitude, longitude: req.body.longitude, directions: req.body.directions}, function(error, campsites) {
-		res.render('Campsite', {campSite: campSite});
+	console.log("askldj");
+	db.CampSite.create({local: {campsite: req.body.campsite, latitude: req.body.latitude, longitude: req.body.longitude, directions: req.body.directions}}, function(error, campSite) {
+		console.log(campSite);
+		res.json(campSite);
 	});
 };
 // function newSitePost(req,res) {

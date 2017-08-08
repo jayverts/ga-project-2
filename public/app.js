@@ -36,30 +36,30 @@ campSites.push({
 $(document).ready(function() {
   console.log('app.js loaded!');
   $.get("http://localhost:3000/north").done(function(data) {
-    let campSites = data;
-    campSites.forEach(function(campSites) {
-    renderCampsites(campSites);
-   console.log("loaded!");
-   });
+    let campSite = data;
+    console.log(data);
+   //  campSite.forEach(function(campsites) {
+   //  renderCampsites(campsites);
+   // console.log("loaded!");
+   // });
   });
 
 $("form").on("submit", function(event) {
   event.preventDefault();
   var formData = $(this).serialize();
    $(this).trigger("reset");
-  console.log("got data");
+  console.log(formData);
 
-$.ajax({
-  method: 'POST',
-  url: '/north/campsites',
-  dataType: 'json',
-  data: formData,
-  success: function(event){
-    renderCampsites(event);
-      console.log("POSTING!");
-      }
-    });
+  $.ajax({
+    method: 'POST',
+    url: '/north/campsites',
+    dataType: 'json',
+    data: formData,
+    success: function(campsite){
+      renderCampsites(campsite);
+    }
   });
+});
 
 $('#campsites').on('click', '.add-campsite', function(e) {
   console.log('asdfasdfasdf');
@@ -79,12 +79,12 @@ $('#campsites').on('click', '.add-campsite', function(e) {
   });
 
 // this function takes a single album and renders it to the page
-function renderCampsites(CampSites) {
+function renderCampsites(Campsite) {
   console.log('rendering Campsite:', Campsite);
-
+  Campsite = Campsite.local;
   var campsiteHtml =
   "        <!-- one campsite-->" +
-  "        <div class='row campsite' data-campsite-id='" + campSites._id+ "'>" +
+  "        <div class='row campsite' data-campsite-id='" + Campsite._id+ "'>" +
   "          <div class='col-md-10 col-md-offset-1'>" +
   "            <div class='panel panel-default'>" +
   "              <div class='panel-body'>" +
@@ -97,19 +97,19 @@ function renderCampsites(CampSites) {
   "                    <ul class='list-group'>" +
   "                      <li class='list-group-item'>" +
   "                        <h4 class='inline-header'>Campsite:</h4>" +
-  "                        <span class='campsite'>" + campSites.campsite + "</span>" +
+  "                        <span class='campsite'>" + Campsite.campsite + "</span>" +
   "                      </li>" +
   "                      <li class='list-group-item'>" +
   "                        <h4 class='inline-header'>Latitude:</h4>" +
-  "                        <span class='latitude'>" +  campSites.latitude + "</span>" +
+  "                        <span class='latitude'>" +  Campsite.latitude + "</span>" +
   "                      </li>" +
   "                      <li class='list-group-item'>" +
   "                        <h4 class='inline-header'>Longitude:</h4>" +
-  "                        <span class='longitude'>" + campSites.longitude + "</span>" +
+  "                        <span class='longitude'>" + Campsite.longitude + "</span>" +
   "                      </li>" +
   "                      <li class='list-group-item'>" +
   "                        <h4 class='inline-header'>Directions:</h4>" +
-  "                        <span class='directions'>" + campSites.directions + "</span>" +
+  "                        <span class='directions'>" + Campsite.directions + "</span>" +
   "                      </li>" +
   "                    </ul>" +
   "                  </div>" +

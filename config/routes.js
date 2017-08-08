@@ -9,7 +9,7 @@ var usersController = require('../controllers/users');
 var staticsController = require('../controllers/statics');
 var northController = require('../controllers/statics');
 var westController = require('../controllers/statics');
-var siteController = require('../controllers/newCampsites');
+var siteController = require('../controllers/campSites');
 
 function authenticatedUser(req, res, next) {
   // If the user is authenticated, then we continue the execution

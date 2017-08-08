@@ -7,6 +7,7 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
+// var ejs = require('ejs');
 
 mongoose.connect('mongodb://localhost/project-2'); 
 
@@ -66,6 +67,10 @@ campSites.push({
 
 var routes = require('./config/routes');
 app.use(routes);
+
+// ejs.renderFile('./north.ejs', CampSite, function(err,str) {
+//   html = str;
+// });
 
 // app.get('/', function homepage (req, res) {
 //   res.sendFile(__dirname + '/views/index.ejs');
