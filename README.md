@@ -29,3 +29,7 @@ Not far.
 8/7/2017
 ---------
 Day before the project is due. I am still stuck trying to get my JSON to render on the page. Here goes nothing.
+
+8/8/2017  
+-------
+Dooms day! Got stuff showing up on my page but it broke my login. Need to get that to work again. But here is my Heroku webpage... https://still-citadel-65783.herokuapp.com/
