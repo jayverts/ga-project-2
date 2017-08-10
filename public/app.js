@@ -1,27 +1,23 @@
 var campSites = [];
 campSites.push({
-  _id: 132,
   campsite: 'Soap Creek Corral',
   latitude : 38.54702233,
   longitude: -107.3162093,
   directions: "Take U.S. Highway 50 to Colorado State Highway 92. Turn right on to Highway 92 travel 1 miles to County Road 721 (also called Forest Road #721). Turn right on Forest Road #721 and drive 7.25 miles to Forest Road #824. Turn right on to Forest Road #824 and travel 0.5 miles."
 });
 campSites.push({
-  _id: 133,
   campsite: 'West Magnolia',
   latitude: 39.9504986117,
   longitude: -105.50440096800,
   directions: "From Nederland, head south on Colorado Highway 119 for 2.8 miles. Turn west onto County Road 132W. Limited parking is available just off of the highway, or continue one mile west and turn south through the second Forest Service gate to the main trailhead parking area."
 });
 campSites.push({
-    _id: 134,
     campsite: 'Winiger Ridge',
     latitude: 39.9289926,
     longitude: -105.4412027,
     directions: "From Boulder, head west on Canyon Boulevard (Colorado Highway 119) to Magnolia Road (about 4.5 miles up from the mouth of the canyon). Turn south on Magnolia and follow it for 6.6 miles. Turn south on Boulder County Road 68 and follow it two miles to National Forest System Road (NFSR) 359. Turn south on NFSR 359"
   });
 campSites.push({
-    _id: 135,
     campsite: 'Bill Moore Lake',
     latitude: 39.8047407,
     longitude: -105.7124468,
@@ -34,17 +30,15 @@ campSites.push({
 
 
 $(document).ready(function() {
-  console.log('app.js loaded!');
-  $.get("http://localhost:3000/north").done(function(data) {
-    let campSite = data;
-    console.log(data);
-   //  campSite.forEach(function(campsites) {
-   //  renderCampsites(campsites);
-   // console.log("loaded!");
-   // });
+  $.get("http://localhost:3000/north/campsites").done(function(data) {
+    let campsites = data;
+    campsites.forEach(function(campsite) {
+    renderCampsite(campsite);
+    console.log(campsite);
+   });
   });
 
-$("form").on("submit", function(event) {
+$("#north").on("submit", function(event) {
   event.preventDefault();
   var formData = $(this).serialize();
    $(this).trigger("reset");
@@ -56,15 +50,16 @@ $("form").on("submit", function(event) {
     dataType: 'json',
     data: formData,
     success: function(campsite){
-      renderCampsites(campsite);
+      renderCampsite(campsite);
+      console.log(campsite);
     }
   });
 });
 
 $('#campsites').on('click', '.add-campsite', function(e) {
   console.log('asdfasdfasdf');
-  var id= $(this).parents('.campsite').data('campsite-id');
-  console.log('id',id);
+  // var id= $(this).parents('.campsite').data('campsite-id');
+  // console.log('id',id);
 
   // call this when the button on the modal is clicked
 //********
@@ -79,9 +74,7 @@ $('#campsites').on('click', '.add-campsite', function(e) {
   });
 
 // this function takes a single album and renders it to the page
-function renderCampsites(Campsite) {
-  console.log('rendering Campsite:', Campsite);
-  Campsite = Campsite.local;
+function renderCampsite(campsite) {
   var campsiteHtml =
   "        <!-- one campsite-->" +
   // "        <div class='row campsite' data-campsite-id='" + Campsite._id+ "'>" +
@@ -97,23 +90,23 @@ function renderCampsites(Campsite) {
   "                    <ul class='list-group'>" +
   "                      <li class='list-group-item'>" +
   "                        <h4 class='inline-header'>Campsite:</h4>" +
-  "                        <span class='campsite'>" + Campsite.campsite + "</span>" +
+  "                        <span class='campsite'>" + campsite.campsite + "</span>" +
   "                      </li>" +
   "                      <li class='list-group-item'>" +
   "                        <h4 class='inline-header'>Latitude:</h4>" +
-  "                        <span class='latitude'>" +  Campsite.latitude + "</span>" +
+  "                        <span class='latitude'>" +  campsite.latitude + "</span>" +
   "                      </li>" +
   "                      <li class='list-group-item'>" +
   "                        <h4 class='inline-header'>Longitude:</h4>" +
-  "                        <span class='longitude'>" + Campsite.longitude + "</span>" +
+  "                        <span class='longitude'>" + campsite.longitude + "</span>" +
   "                      </li>" +
   "                      <li class='list-group-item'>" +
   "                        <h4 class='inline-header'>Directions:</h4>" +
-  "                        <span class='directions'>" + Campsite.directions + "</span>" +
+  "                        <span class='directions'>" + campsite.directions + "</span>" +
   "                      </li>" +
   "                      <li class='list-group-item'>" +
   "                        <h4 class='inline-header'>Weather:</h4>" +
-  "                        <span class='directions'>" + Campsite.weather + "</span>" +
+  "                        <span class='directions'>" + campsite.weather + "</span>" +
   "                      </li>" +
   "                    </ul>" +
   "                  </div>" +

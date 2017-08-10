@@ -3,7 +3,8 @@ function home(req, res) {
   res.render('index');
 }
 
-function north(req, res) {  
+function north(req, res) {
+  console.log("loading northejs");
   res.render('north.ejs');
 }
 
