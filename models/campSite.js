@@ -5,7 +5,10 @@ var CampSite = mongoose.Schema({
     latitude : Number,
     longitude : Number,
     directions : String,
-    weather: String
+    weather: {
+    	summary: String,
+    	icon: String
+    }
 });
 
 module.exports = mongoose.model('CampSite', CampSite);
