@@ -1,7 +1,7 @@
 // var CampSites = require('../models/campSite');
 var db = require('../models');
 var request = require('request');
-var keysInfo = require('../env.js');
+var apiKey = process.env.apiKey || require('../env.js');
 
 var siteGet = function(req, res) { //look at that controller
 	console.log("fuck");
@@ -15,7 +15,7 @@ var sitePost = function(req, res) { //and look at that controller
 	console.log(req.body);
 	//1 req body data
 	//3data to create does not match the schema of the model
-	var apiUrl = "https://api.darksky.net/forecast/" + keysInfo + "/" + req.body.latitude + "," + req.body.longitude;
+	var apiUrl = "https://api.darksky.net/forecast/" + apiKey + "/" + req.body.latitude + "," + req.body.longitude;
   	request(apiUrl, function (error, response, body) {
 		//Inside that callback
 	    var weather = {
