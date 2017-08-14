@@ -9,7 +9,7 @@ var bodyParser   = require('body-parser');
 var session      = require('express-session');
 // var ejs = require('ejs');
 
-// mongoose.connect( process.env.MONGODB_URI || 'mongodb://localhost/project-2');
+mongoose.connect( process.env.MONGODB_URI || 'mongodb://localhost/project-2');
 
 app.use(morgan('dev')); 
 app.use(cookieParser());
