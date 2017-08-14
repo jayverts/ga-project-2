@@ -46,7 +46,7 @@ campSites.push({
 
 
 $(document).ready(function() {
-  $.get("http://localhost:3000/north/campsites").done(function(data) {
+  $.get("/north/campsites").done(function(data) {
     let campsites = data;
     campsites.forEach(function(campsite) {
     renderCampsite(campsite);
